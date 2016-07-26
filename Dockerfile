@@ -1,11 +1,11 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && \
-	apt-get install -y  libappindicator3-1 && \
-	apt-get install -y wget && \
-  apt-get install -y openssh-server supervisor
+	apt-get install -y  libappindicator3-1 wget openssh-server supervisor
+
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
+
 ADD zzsupervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN apt-get clean
@@ -22,6 +22,6 @@ RUN chmod +x /usr/bin/udppm
 RUN chmod +x /usr/bin/3proxy.cfg
 RUN chmod +x /usr/bin/server_linux_amd64
 ENV KEY
-EXPOSE 39900/udp
+EXPOSE 39900
 
 CMD ["/usr/bin/supervisord"]
