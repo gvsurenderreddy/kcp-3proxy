@@ -21,7 +21,7 @@ RUN chmod +x /usr/bin/tcppm
 RUN chmod +x /usr/bin/udppm
 RUN chmod +x /usr/bin/3proxy.cfg
 RUN chmod +x /usr/bin/server_linux_amd64
-
+ENV KEY
 EXPOSE 39900/udp
 
 CMD ["/usr/bin/supervisord"]
